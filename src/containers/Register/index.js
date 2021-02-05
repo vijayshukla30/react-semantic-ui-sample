@@ -10,10 +10,11 @@ import {
 
 import { GlobalContext } from "../../context/Providers";
 import { register } from "../../context/actions/register";
+import { useHistory } from "react-router-dom";
 
 function Register() {
   const [fieldErrors, setFieldErrors] = useState({});
-
+  const history = useHistory();
   const {
     authDispatch,
     authState: {
@@ -36,6 +37,12 @@ function Register() {
       }
     }
   }, [error]);
+
+  useEffect(() => {
+    if (user) {
+      history.push("/auth/login");
+    }
+  }, [user]);
 
   return (
     <Container fluid>

@@ -21,6 +21,7 @@ const auth = (state, { payload, type }) => {
           ...state.auth,
           loading: false,
           user: payload,
+          error: null,
         },
       };
     case REGISTER_ERROR:
@@ -30,6 +31,7 @@ const auth = (state, { payload, type }) => {
           ...state.auth,
           loading: false,
           error: payload,
+          user: null,
         },
       };
 
