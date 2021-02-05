@@ -1,63 +1,82 @@
 import React from "react";
-import { Button, Form, Input } from "semantic-ui-react";
-import { Field, withFormik } from "formik";
-import SemanticFormikInputField from "../../components/SemanticInput";
+import { Formik } from "formik";
+import {
+  Checkbox,
+  Form,
+  Input,
+  ResetButton,
+  SubmitButton,
+} from "formik-semantic-ui-react";
+import SignupSchema, { SignupInitialValues } from "../../utils/SignupSchema";
+import { FormGroup } from "semantic-ui-react";
 
-const RegisterUI = (props) => {
-  const { handleSubmit } = props;
+const RegisterUI = ({ isSubmitting, handleSubmit }) => {
   return (
-    <Form onSubmit={handleSubmit}>
-      <Field
-        name="username"
-        label="Username"
-        placeholder="user@user.user"
-        type="email"
-        component={SemanticFormikInputField}
-      />
-      <Field
-        name="firstName"
-        label="First Name"
-        placeholder="firstname"
-        component={SemanticFormikInputField}
-      />
-
-      <Field
-        name="lastName"
-        label="Last Name"
-        placeholder="lastname"
-        component={SemanticFormikInputField}
-      />
-
-      <Field
-        name="password"
-        label="Password"
-        placeholder="password"
-        type="password"
-        component={SemanticFormikInputField}
-      />
-
-      <Field
-        name="confirm_password"
-        label="Re-enter Password"
-        placeholder="Re-enter Password"
-        type="password"
-        component={SemanticFormikInputField}
-      />
-
-      <Button.Group fluid>
-        <Button positive type="Submit">
-          Create Account
-        </Button>
-        <Button.Or />
-        <Button>Already have account?</Button>
-      </Button.Group>
-    </Form>
+    <Formik
+      initialValues={SignupInitialValues}
+      validationSchema={SignupSchema}
+      onSubmit={handleSubmit}
+    >
+      <Form>
+        <Input
+          errorPrompt
+          name="username"
+          label="Username"
+          placeholder="user@user.user"
+        />
+        <Input
+          id="input-first-name"
+          errorPrompt
+          name="firstName"
+          label="First Name"
+          placeholder="First Name"
+        />
+        <Input
+          id="input-last-name"
+          errorPrompt
+          name="lastName"
+          label="Last Name"
+          placeholder="Last Name"
+        />
+        <Input
+          id="input-password"
+          errorPrompt
+          name="password"
+          type="password"
+          label="Password"
+          placeholder="Password"
+          autoComplete="off"
+        />
+        <Input
+          id="input-confirm-password"
+          errorPrompt
+          name="confirmPassword"
+          type="password"
+          label="Confirm Password"
+          autoComplete="off"
+        />
+        <Checkbox
+          id="checkbox-agree-ts"
+          fitted
+          errorPrompt
+          name="agreeTS"
+          label={
+            <label>
+              I agree to <a href="#top">the Terms and Conditions</a>
+            </label>
+          }
+        />
+        <FormGroup unstackable>
+          <SubmitButton primary fluid loading={isSubmitting} width={8}>
+            Submit
+          </SubmitButton>
+          <ResetButton color="green" fluid width={8}>
+            Reset
+          </ResetButton>
+        </FormGroup>
+      </Form>
+    </Formik>
   );
 };
 
-export default withFormik({
-  handleSubmit: (values, formikBag) => {
-    console.log("VALUES", values);
-    console.log("FORMIK BAG", formikBag);
-  },
-})(RegisterUI);
+export default RegisterUI;

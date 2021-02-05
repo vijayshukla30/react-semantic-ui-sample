@@ -9,6 +9,14 @@ import {
 } from "semantic-ui-react";
 
 function Register() {
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+  const onSubmit = (values) => {
+    console.log("values :>> ", values);
+    setIsSubmitting(true);
+    setTimeout(() => setIsSubmitting(false), 1000);
+  };
+
   return (
     <Container fluid>
       <Header />
@@ -18,7 +26,7 @@ function Register() {
           <Grid.Column>
             <SemanticHeader textAlign="center">Sign Up</SemanticHeader>
             <Segment>
-              <RegisterUI />
+              <RegisterUI handleSubmit={onSubmit} isSubmitting={isSubmitting} />
             </Segment>
           </Grid.Column>
           <Grid.Column />
