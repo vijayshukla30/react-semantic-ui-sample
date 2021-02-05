@@ -8,14 +8,15 @@ import {
   SubmitButton,
 } from "formik-semantic-ui-react";
 import SignupSchema, { SignupInitialValues } from "../../utils/SignupSchema";
-import { FormGroup } from "semantic-ui-react";
+import { FormGroup, Label } from "semantic-ui-react";
 
-const RegisterUI = ({ isSubmitting, handleSubmit }) => {
+const RegisterUI = ({ isSubmitting, handleSubmit, onReset, fieldErrors }) => {
   return (
     <Formik
       initialValues={SignupInitialValues}
       validationSchema={SignupSchema}
       onSubmit={handleSubmit}
+      onReset={onReset}
     >
       <Form>
         <Input
@@ -24,6 +25,11 @@ const RegisterUI = ({ isSubmitting, handleSubmit }) => {
           label="Username"
           placeholder="user@user.user"
         />
+        {fieldErrors.username && (
+          <Label basic pointing prompt>
+            {fieldErrors.username}
+          </Label>
+        )}
         <Input
           id="input-first-name"
           errorPrompt
@@ -31,6 +37,11 @@ const RegisterUI = ({ isSubmitting, handleSubmit }) => {
           label="First Name"
           placeholder="First Name"
         />
+        {fieldErrors.first_name && (
+          <Label basic pointing prompt>
+            {fieldErrors.first_name}
+          </Label>
+        )}
         <Input
           id="input-last-name"
           errorPrompt
@@ -38,6 +49,11 @@ const RegisterUI = ({ isSubmitting, handleSubmit }) => {
           label="Last Name"
           placeholder="Last Name"
         />
+        {fieldErrors.last_name && (
+          <Label basic pointing prompt>
+            {fieldErrors.last_name}
+          </Label>
+        )}
         <Input
           id="input-password"
           errorPrompt
@@ -47,6 +63,11 @@ const RegisterUI = ({ isSubmitting, handleSubmit }) => {
           placeholder="Password"
           autoComplete="off"
         />
+        {fieldErrors.password && (
+          <Label basic pointing prompt>
+            {fieldErrors.password}
+          </Label>
+        )}
         <Input
           id="input-confirm-password"
           errorPrompt
@@ -66,8 +87,19 @@ const RegisterUI = ({ isSubmitting, handleSubmit }) => {
             </label>
           }
         />
+        {fieldErrors.agreeTS && (
+          <Label basic pointing prompt>
+            {fieldErrors.agreeTS}
+          </Label>
+        )}
         <FormGroup unstackable>
-          <SubmitButton primary fluid loading={isSubmitting} width={8}>
+          <SubmitButton
+            primary
+            fluid
+            loading={isSubmitting}
+            width={8}
+            disabled={isSubmitting}
+          >
             Submit
           </SubmitButton>
           <ResetButton color="green" fluid width={8}>

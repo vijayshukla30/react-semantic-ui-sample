@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import RegisterUI from "../../layout/Register";
 import Header from "../../components/Header";
 import {
@@ -8,14 +8,34 @@ import {
   Segment,
 } from "semantic-ui-react";
 
-function Register() {
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
+import { GlobalContext } from "../../context/Providers";
+import { register } from "../../context/actions/register";
 
+function Register() {
+  const [fieldErrors, setFieldErrors] = useState({});
+
+  const {
+    authDispatch,
+    authState: {
+      auth: { loading, user, error },
+    },
+  } = React.useContext(GlobalContext);
   const onSubmit = (values) => {
-    console.log("values :>> ", values);
-    setIsSubmitting(true);
-    setTimeout(() => setIsSubmitting(false), 1000);
+    register(values)(authDispatch);
   };
+
+  const onReset = () => {
+    setFieldErrors({});
+  };
+
+  useEffect(() => {
+    if (error) {
+      console.log("error :>> ", error);
+      for (let item in error) {
+        setFieldErrors({ ...fieldErrors, [item]: error[item][0] });
+      }
+    }
+  }, [error]);
 
   return (
     <Container fluid>
@@ -26,7 +46,12 @@ function Register() {
           <Grid.Column>
             <SemanticHeader textAlign="center">Sign Up</SemanticHeader>
             <Segment>
-              <RegisterUI handleSubmit={onSubmit} isSubmitting={isSubmitting} />
+              <RegisterUI
+                handleSubmit={onSubmit}
+                isSubmitting={loading}
+                fieldErrors={fieldErrors}
+                onReset={onReset}
+              />
             </Segment>
           </Grid.Column>
           <Grid.Column />
