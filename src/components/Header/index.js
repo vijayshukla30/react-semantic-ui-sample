@@ -4,7 +4,7 @@ import logo from "../../assets/images/logo.svg";
 
 const Header = () => {
   return (
-    <Menu secondary>
+    <Menu secondary pointing>
       <Image src={logo} width={60} />
       <Menu.Item>TrulyContact</Menu.Item>
       <Menu.Item position="right">Create Contace</Menu.Item>
