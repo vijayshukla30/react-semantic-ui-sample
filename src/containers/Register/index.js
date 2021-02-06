@@ -5,12 +5,13 @@ import {
   Container,
   Grid,
   Header as SemanticHeader,
+  Message,
   Segment,
 } from "semantic-ui-react";
 
 import { GlobalContext } from "../../context/Providers";
 import { register } from "../../context/actions/register";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Register() {
   const [fieldErrors, setFieldErrors] = useState({});
@@ -59,6 +60,10 @@ function Register() {
                 fieldErrors={fieldErrors}
                 onReset={onReset}
               />
+              <Message warning>
+                Already have account?&nbsp;
+                <Link to="/auth/login">Login</Link>&nbsp;instead.
+              </Message>
             </Segment>
           </Grid.Column>
           <Grid.Column />

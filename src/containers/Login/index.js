@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Container,
   Grid,
@@ -57,7 +57,8 @@ function Login() {
               )}
               <LoginUI handleSubmit={onSubmit} isSubmitting={loading} />
               <Message warning>
-                Don't have account?&nbsp;<a href="#">Register</a>&nbsp;instead.
+                Don't have account?&nbsp;
+                <Link to="/auth/register">Register</Link>&nbsp;instead.
               </Message>
             </Segment>
           </Grid.Column>
