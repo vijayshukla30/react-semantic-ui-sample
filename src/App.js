@@ -12,13 +12,9 @@ import isAuthenticated from "./utils/isAuthenticated";
 
 const RenderRouter = (route) => {
   const history = useHistory();
-  console.log("route :>> ", route);
-  console.log(
-    "isAuthenticated() :>> ",
-    isAuthenticated(),
-    " route.authenticated ",
-    route.authenticated
-  );
+
+  document.title = route.title;
+
   if (route.authenticated && !isAuthenticated()) {
     console.log("redirect ");
     history.push("/auth/login");
