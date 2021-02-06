@@ -2,7 +2,9 @@ import {
   CONTACTS_FAILED,
   CONTACTS_LOADING,
   CONTACTS_SUCCESS,
+  LOGOUT_USER,
 } from "../../constants/actionTypes";
+import contactInitialState from "../initialstates/contactInitialState";
 
 const contact = (state, { payload, type }) => {
   switch (type) {
@@ -36,6 +38,11 @@ const contact = (state, { payload, type }) => {
         },
       };
 
+    case LOGOUT_USER:
+      return {
+        ...state,
+        contactInitialState,
+      };
     default:
       return state;
   }
