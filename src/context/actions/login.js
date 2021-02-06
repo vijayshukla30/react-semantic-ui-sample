@@ -16,6 +16,7 @@ export const login = ({ username, password }) => async (dispatch) => {
       password,
     });
     console.log("response.data :>> ", response.data);
+    localStorage.token = response.data.token;
     dispatch({
       type: LOGIN_SUCCESS,
       payload: response.data,

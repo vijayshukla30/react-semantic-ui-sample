@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Container,
   Grid,
@@ -14,6 +15,7 @@ import LoginUI from "../../layout/Login";
 
 function Login() {
   const [loginError, setLoginError] = useState("");
+  const history = useHistory();
 
   const onSubmit = (values) => {
     login(values)(authDispatch);
@@ -32,6 +34,12 @@ function Login() {
       setLoginError("Invalid Login Details");
     }
   }, [error]);
+
+  useEffect(() => {
+    if (user?.user) {
+      history.push("/");
+    }
+  }, [user]);
 
   return (
     <Container fluid>
