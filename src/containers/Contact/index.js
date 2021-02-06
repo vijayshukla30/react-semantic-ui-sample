@@ -1,20 +1,26 @@
 import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { Container } from "semantic-ui-react";
 import Header from "../../components/Header";
 import getContacts from "../../context/actions/contacts/getContacts";
 import { GlobalContext } from "../../context/Providers";
+import ContactListUI from "../../layout/Contact";
 
 const Contact = () => {
-  const context = useContext(GlobalContext);
+  const { contactsState, contactsDispatch } = useContext(GlobalContext);
   const history = useHistory();
+  console.log("contactsState :>> ", contactsState);
   useEffect(() => {
-    getContacts(history);
+    getContacts(history)(contactsDispatch);
   }, []);
 
   return (
-    <div>
+    <Container fluid>
       <Header />
-    </div>
+      <Container>
+        <ContactListUI state={contactsState} />
+      </Container>
+    </Container>
   );
 };
 
