@@ -7,6 +7,7 @@ const contactInitialState = {
   addContact: {
     loading: false,
     error: null,
+    data: null,
   },
 };
 

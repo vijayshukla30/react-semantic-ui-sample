@@ -6,6 +6,7 @@ const ContactListUI = ({
     contacts: { loading, error, data },
   },
 }) => {
+  console.log("data :>> ", data);
   return (
     <div>
       {loading && (
@@ -39,7 +40,7 @@ const ContactListUI = ({
                     src={contact.contact_picture}
                   />
                   <span>
-                    {contact.first_name} {contact.lastName}
+                    {contact.first_name} {contact.last_name}
                   </span>
                 </List.Content>
               </List.Item>

@@ -1,7 +1,13 @@
 import React from "react";
 import { Formik } from "formik";
-import { Form, Input, SubmitButton, Select } from "formik-semantic-ui-react";
-import { Checkbox, FormGroup } from "semantic-ui-react";
+import {
+  Form,
+  Input,
+  SubmitButton,
+  Select,
+  Checkbox,
+} from "formik-semantic-ui-react";
+import { FormGroup } from "semantic-ui-react";
 import ContactSchema, {
   ContactInitialValues,
 } from "../../utils/CreateContactSchema";
@@ -32,7 +38,6 @@ const CreateContactUI = ({ handleSubmit, isSubmitting }) => {
         </FormGroup>
         <FormGroup unstackable widths={2}>
           <Select
-            id="select-country"
             errorPrompt
             name="country"
             label="Country"
@@ -52,7 +57,6 @@ const CreateContactUI = ({ handleSubmit, isSubmitting }) => {
         <FormGroup>
           &nbsp;&nbsp;
           <Checkbox
-            id="favourite"
             fitted
             errorPrompt
             name="favourite"

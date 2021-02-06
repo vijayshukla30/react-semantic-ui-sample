@@ -1,4 +1,8 @@
 import {
+  CONTACTS_CREATE_CLEAR,
+  CONTACTS_CREATE_ERROR,
+  CONTACTS_CREATE_LOADING,
+  CONTACTS_CREATE_SUCCESS,
   CONTACTS_FAILED,
   CONTACTS_LOADING,
   CONTACTS_SUCCESS,
@@ -42,6 +46,50 @@ const contact = (state, { payload, type }) => {
       return {
         ...state,
         contactInitialState,
+      };
+    case CONTACTS_CREATE_LOADING:
+      return {
+        ...state,
+        addContact: {
+          ...state.addContact,
+          loading: true,
+          error: null,
+        },
+      };
+
+    case CONTACTS_CREATE_SUCCESS:
+      return {
+        ...state,
+        addContact: {
+          ...state.addContact,
+          loading: false,
+          data: payload,
+        },
+        contacts: {
+          ...state.contacts,
+          loading: false,
+          data: [payload, ...state.contacts.data],
+        },
+      };
+
+    case CONTACTS_CREATE_ERROR:
+      return {
+        ...state,
+        addContact: {
+          ...state.addContact,
+          loading: false,
+          error: [payload, ...state.contacts.data],
+        },
+      };
+    case CONTACTS_CREATE_CLEAR:
+      return {
+        ...state,
+        addContact: {
+          ...state.addContact,
+          loading: false,
+          error: null,
+          data: null,
+        },
       };
     default:
       return state;
