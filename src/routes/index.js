@@ -17,15 +17,15 @@ const routes = [
     authenticated: false,
   },
   {
-    path: "/",
-    component: Contact,
-    title: "Contact",
-    authenticated: true,
-  },
-  {
     path: "/contacts/create",
     component: CreateContact,
     title: "Create Contact",
+    authenticated: true,
+  },
+  {
+    path: "/",
+    component: Contact,
+    title: "Contact",
     authenticated: true,
   },
 ];

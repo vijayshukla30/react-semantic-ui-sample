@@ -9,7 +9,6 @@ import ContactListUI from "../../layout/Contact";
 const Contact = () => {
   const { contactsState, contactsDispatch } = useContext(GlobalContext);
   const history = useHistory();
-  console.log("contactsState :>> ", contactsState);
   useEffect(() => {
     getContacts(history)(contactsDispatch);
   }, []);
