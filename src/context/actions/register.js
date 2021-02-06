@@ -3,7 +3,7 @@ import {
   REGISTER_LOADING,
   REGISTER_SUCCESS,
 } from "../../constants/actionTypes";
-import axiosInstance from "../../helpers/axios";
+import axiosInstance from "../../helpers/axiosInstance";
 
 export const register = ({
   username,
@@ -16,7 +16,7 @@ export const register = ({
   });
 
   try {
-    const response = await axiosInstance.post("/auth/register", {
+    const response = await axiosInstance().post("/auth/register", {
       username,
       email: username,
       first_name,

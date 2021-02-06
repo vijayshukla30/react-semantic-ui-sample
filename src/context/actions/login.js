@@ -3,7 +3,7 @@ import {
   LOGIN_LOADING,
   LOGIN_SUCCESS,
 } from "../../constants/actionTypes";
-import axiosInstance from "../../helpers/axios";
+import axiosInstance from "../../helpers/axiosInstance";
 
 export const login = ({ username, password }) => async (dispatch) => {
   dispatch({
@@ -11,7 +11,7 @@ export const login = ({ username, password }) => async (dispatch) => {
   });
 
   try {
-    const response = await axiosInstance.post("/auth/login", {
+    const response = await axiosInstance().post("/auth/login", {
       username,
       password,
     });
