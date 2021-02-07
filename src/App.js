@@ -38,7 +38,11 @@ const App = () => {
     <GlobalProvider>
       <Router>
         <Header setToggle={toggle} />
-        <Sidebar.Pushable as={Segment} style={{ overflow: "hidden" }}>
+        <Sidebar.Pushable
+          as={Segment}
+          style={{ overflow: "hidden" }}
+          className="header-segment"
+        >
           <SideMenu toggleBtn={toggleBtn} className="sidebar" />
           <Sidebar.Pusher dimmed={toggleBtn}>
             <Segment basic>

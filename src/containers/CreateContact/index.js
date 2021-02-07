@@ -45,7 +45,6 @@ function CreateContact() {
 
   return (
     <Container fluid>
-      <Header />
       <Grid centered className="register-form">
         <Grid.Row stretched>
           <Grid.Column width={1}></Grid.Column>

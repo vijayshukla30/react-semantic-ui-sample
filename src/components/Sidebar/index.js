@@ -1,7 +1,14 @@
-import React from "react";
-import { Icon, Menu, Sidebar } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Accordion, Icon, Menu, Sidebar } from "semantic-ui-react";
 
 const SideMenu = ({ toggleBtn }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const handleClick = (e, titleProps) => {
+    const { index } = titleProps;
+    const newIndex = activeIndex === index ? -1 : index;
+    setActiveIndex(newIndex);
+  };
   return (
     <Sidebar
       as={Menu}
@@ -9,20 +16,30 @@ const SideMenu = ({ toggleBtn }) => {
       vertical
       visible={toggleBtn}
       direction="left"
-      icon="labeled"
-      width="thin"
     >
-      <Menu.Item as="a">
+      <Menu.Item as={Link} to="/">
         <Icon name="home" />
         Home
       </Menu.Item>
-      <Menu.Item as="a">
-        <Icon name="gamepad" />
-        Games
-      </Menu.Item>
-      <Menu.Item as="a">
-        <Icon name="camera" />
-        Channels
+      <Menu.Item as={Accordion}>
+        <Accordion.Title
+          active={activeIndex === 0}
+          index={0}
+          onClick={handleClick}
+        >
+          Contacts
+          <Icon name="dropdown" />
+        </Accordion.Title>
+        <Accordion.Content active={activeIndex === 0}>
+          <Menu.Item as={Link} to="/">
+            <Icon name="users" />
+            List
+          </Menu.Item>
+          <Menu.Item as={Link} to="/contacts/create">
+            <Icon name="user plus" />
+            Add
+          </Menu.Item>
+        </Accordion.Content>
       </Menu.Item>
     </Sidebar>
   );

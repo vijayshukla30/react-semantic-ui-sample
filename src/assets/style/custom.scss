@@ -21,7 +21,7 @@
   align-items: center;
 }
 
-.segment {
+.header-segment {
   overflow: "hidden";
   margin-top: -1rem !important;
   height: 100vh;
@@ -29,6 +29,13 @@
 
 .sidebar {
   padding: 1rem;
+  .accordion {
+    .title {
+      i.dropdown.icon {
+        float: right;
+      }
+    }
+  }
 }
 .pusher {
   padding-top: 1rem;
