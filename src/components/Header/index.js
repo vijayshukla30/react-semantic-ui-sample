@@ -33,9 +33,11 @@ const Header = ({ setToggle }) => {
       {isAuthenticated() && (
         <Menu.Item position="right">
           <Input
-            style={{ width: 350 }}
-            placeholder="Search Contacts"
+            style={{ width: 300 }}
+            placeholder="Search Assets"
             onChange={onChange}
+            icon="search"
+            iconPosition="left"
           />
         </Menu.Item>
       )}

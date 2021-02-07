@@ -65,10 +65,6 @@
 }
 
 .header-menu {
-  background: $blue-color !important;
-  .item {
-    color: $white-color !important;
-  }
 }
 
 .header-segment {
@@ -80,13 +76,10 @@
 
 .sidebar {
   padding: 1rem;
-  background: $dark-color !important;
-  .item {
-    color: $primary-text-color !important;
-  }
+  font-family: $font-family !important;
+
   .accordion {
     .title {
-      color: $primary-text-color !important;
       i.dropdown.icon {
         float: right;
       }

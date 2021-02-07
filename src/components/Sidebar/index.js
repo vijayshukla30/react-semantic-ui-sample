@@ -20,7 +20,9 @@ const SideMenu = ({ toggleBtn, segmentRef, onHide }) => {
       onHide={onHide}
     >
       <Menu.Item as={Link} to="/">
+        {/* <Icon.Group> */}
         <Icon name="home" />
+        {/* </Icon.Group> */}
         Home
       </Menu.Item>
       <Menu.Item as={Accordion}>
