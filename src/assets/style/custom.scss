@@ -55,9 +55,6 @@
 }
 
 .thumbnail {
-  background-color: gray;
-
-  color: white;
   font-weight: bolder;
   font-size: 21px;
   display: flex;
@@ -67,16 +64,29 @@
   margin-right: 10px;
 }
 
+.header-menu {
+  background: $blue-color !important;
+  .item {
+    color: $white-color !important;
+  }
+}
+
 .header-segment {
   overflow: "hidden";
   margin-top: -1rem !important;
   height: 100vh;
+  background: $bg-color !important;
 }
 
 .sidebar {
   padding: 1rem;
+  background: $dark-color !important;
+  .item {
+    color: $primary-text-color !important;
+  }
   .accordion {
     .title {
+      color: $primary-text-color !important;
       i.dropdown.icon {
         float: right;
       }

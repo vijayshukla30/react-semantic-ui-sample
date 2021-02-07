@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   Button,
   Container,
@@ -18,7 +18,7 @@ const ContactListUI = ({
 }) => {
   console.log("data :>> ", data);
   return (
-    <div>
+    <Fragment>
       <Container>
         <SegmentHeader>Starred</SegmentHeader>
         <Favorites
@@ -79,7 +79,7 @@ const ContactListUI = ({
             : ""}
         </List>
       </Container>
-    </div>
+    </Fragment>
   );
 };
 
