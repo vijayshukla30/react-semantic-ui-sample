@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Accordion, Icon, Menu, Sidebar } from "semantic-ui-react";
 
-const SideMenu = ({ toggleBtn }) => {
+const SideMenu = ({ toggleBtn, segmentRef, onHide }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const handleClick = (e, titleProps) => {
     const { index } = titleProps;
@@ -16,6 +16,8 @@ const SideMenu = ({ toggleBtn }) => {
       vertical
       visible={toggleBtn}
       direction="left"
+      target={segmentRef}
+      onHide={onHide}
     >
       <Menu.Item as={Link} to="/">
         <Icon name="home" />

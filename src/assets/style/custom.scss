@@ -21,6 +21,52 @@
   align-items: center;
 }
 
+.slide-container {
+  display: flex;
+  align-items: center;
+  max-width: 57rem;
+  overflow-y: auto;
+
+  margin: auto;
+}
+
+.single-item-container {
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 10rem;
+}
+
+.items-container {
+  display: flex;
+  overflow-y: hidden;
+  justify-content: center;
+  margin: 0px 4px 15px;
+}
+.items-container::-webkit-scrollbar {
+  display: none;
+}
+
+.icon-class {
+  cursor: pointer;
+}
+
+.thumbnail {
+  background-color: gray;
+
+  color: white;
+  font-weight: bolder;
+  font-size: 21px;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  align-items: center;
+  margin-right: 10px;
+}
+
 .header-segment {
   overflow: "hidden";
   margin-top: -1rem !important;
