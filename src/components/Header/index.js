@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { Menu, Image, Button, Icon } from "semantic-ui-react";
+import { Menu, Button, Icon, Image } from "semantic-ui-react";
 import logo from "../../assets/images/logo.svg";
 import logout from "../../context/actions/logout";
 import { GlobalContext } from "../../context/Providers";
 import isAuthenticated from "../../utils/isAuthenticated";
 
-const Header = () => {
+const Header = ({ setToggle }) => {
   const { pathname } = useLocation();
   const { contactsDispatch } = React.useContext(GlobalContext);
 
@@ -15,10 +15,13 @@ const Header = () => {
     logout(history)(contactsDispatch);
   };
   return (
-    <Menu secondary pointing>
+    <Menu top attached borderless className="header-menu">
       <Image src={logo} width={60} />
       <Menu.Item className="company-name" as={Link} to="/">
         TrulyContacts
+      </Menu.Item>
+      <Menu.Item onClick={setToggle}>
+        <Icon name="content" />
       </Menu.Item>
 
       {pathname === "/" && (

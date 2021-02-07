@@ -20,3 +20,16 @@
   display: flex;
   align-items: center;
 }
+
+.segment {
+  overflow: "hidden";
+  margin-top: -1rem !important;
+  height: 100vh;
+}
+
+.sidebar {
+  padding: 1rem;
+}
+.pusher {
+  padding-top: 1rem;
+}
